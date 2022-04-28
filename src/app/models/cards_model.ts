@@ -6,3 +6,4 @@ export interface Card_data{
 export interface _id{
     "card_name" : string;
 }
+//

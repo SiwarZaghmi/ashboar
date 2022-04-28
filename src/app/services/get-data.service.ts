@@ -13,6 +13,9 @@ export class GetDataService {
   getData() {
     return this._http.get(environment.url+"card");
 1 }
+getData2() {
+  return this._http.get(environment.url)
+} 
 //column chart size / logged
   getData0(){
   return this._http.get(environment.url+"/merge")
@@ -31,4 +34,17 @@ return this._http.get(environment.url+"/closed");
 getData7() {
   return this._http.get(environment.url+"/table1");
 }
+getData8() {
+  return this._http.get(environment.url+"/Data1");
 }
+getData9() {
+  return this._http.get(environment.url+"/card1");
+}
+getData10() {
+  return this._http.get(environment.url+"/card2");
+}
+getData11() {
+  return this._http.get(environment.url+"/tablepg2");
+}
+}
+

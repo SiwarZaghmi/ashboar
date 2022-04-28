@@ -1,28 +1,35 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+
+import { columnData } from "src/app/models/chart_models";
+import { GetDataService } from "src/app/services/get-data.service";
+
 import {
   ApexAxisChartSeries,
   ApexChart,
   ChartComponent,
   ApexDataLabels,
   ApexPlotOptions,
-  ApexResponsive,
-  ApexXAxis,
+  ApexYAxis,
   ApexLegend,
-  ApexFill
+  ApexStroke,
+  ApexXAxis,
+  ApexFill,
+  ApexTooltip
 } from "ng-apexcharts";
-import { columnData } from "src/app/models/chart_models";
-import { GetDataService } from "src/app/services/get-data.service";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
-  responsive: ApexResponsive[];
+  yaxis: ApexYAxis;
   xaxis: ApexXAxis;
-  legend: ApexLegend;
   fill: ApexFill;
+  tooltip: ApexTooltip;
+  stroke: ApexStroke;
+  legend: ApexLegend;
 };
+
 
 @Component({
   selector: 'app-column-chart',
@@ -38,58 +45,64 @@ export class ColumnChartComponent implements OnInit {
     this.chartOptions = {
       series: [
         {
-          name: "",
-          data: []
+          name: "Net Profit",
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
         },
         {
-          name: "",
-          data: []
+          name: "Revenue",
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
         },
-        
+      
       ],
       chart: {
         type: "bar",
-        height: 350,
-        stacked: true,
-        
-        toolbar: {
-          show: true
-        },
-        zoom: {
-          enabled: true
-        }
+        height: 350
       },
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: "bottom",
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }
-      ],
       plotOptions: {
         bar: {
-          horizontal: false
+          horizontal: false,
+          columnWidth: "55%",
+          endingShape: "rounded"
         }
       },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["transparent"]
+      },
       xaxis: {
-        type: "category",
         categories: [
-          
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct"
         ]
       },
-      legend: {
-        position: "right",
-        offsetY: 40
+      yaxis: {
+        title: {
+          text: ""
+        }
       },
       fill: {
         opacity: 1
+      },
+      tooltip: {
+        y: {
+          formatter: function(val) {
+            return "$ " + val + " thousands";
+          }
+        }
       }
     };
+  
    
    }
   ngOnInit(): void {

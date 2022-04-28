@@ -1,0 +1,54 @@
+<div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0">issues table</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Budget</th>
+                <th scope="col">Status</th>
+                <th scope="col">Users</th>
+                <th scope="col">Size</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data">
+                <th scope="row">
+                  <a>{{item.issue[0].title}}</a>
+                </th>
+                <td>
+                    ${{item.value * 4.5}} TND
+                </td>
+                <td>
+                  <span class="badge badge-dot mr-4">
+                    <i class="bg-warning"></i> {{item.project_card[0].card_name}}
+                  </span>
+                </td>
+                <td>
+                    <a>{{extraction(item.assignees)}}</a>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2">{{item.value}} Hour </span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+            
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+

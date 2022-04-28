@@ -13,3 +13,17 @@ export interface issue {
 export interface project_card {
     "card_name" : string
 }
+// table page 2
+export interface table {
+    "_id" : any,
+    "assignes" : assigne[],
+    "issue" : issuee[],
+    "project_card" : project_card[],
+    "value" : Number
+}
+export interface assigne {
+    "login" : string
+}
+export interface issuee{
+    "title":string
+}

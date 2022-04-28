@@ -4,9 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
-import { TableComponent } from './charts_tables/table/table.component';
-import { CardsComponent } from './charts_tables/cards/cards.component';
-import { StateComponent } from 'src/app/charts_tables/state/state.component';
+
+import { TableauxComponent } from './chart_pg2/tableaux/tableaux.component';
 
 
 const routes: Routes = [
@@ -24,8 +23,8 @@ const routes: Routes = [
       }
     ]
   },{
-  'path':'CardsComponent',
-  'component': TableComponent
+  'path':'TableauxComponent',
+  'component': TableauxComponent
 }];
 
 @NgModule({
