@@ -10,37 +10,55 @@ import { GetDataService } from 'src/app/services/get-data.service';
 })
 export class TableauxComponent implements OnInit {
   public data : any;
-  public somme : number;
+  public somme : number = 0 ;
+  config: any;
+  count: number;
+  searchedKeyword: string;
+
   ngOnInit(): void {
     this.getDataService.getData11().subscribe((res)=> {
-      this.data = res as table[]
-      })
+      this.data = res as table[];
+      this.calculateSome();
+      });
       
   }
-  constructor(private getDataService : GetDataService) { }
+  constructor(private getDataService : GetDataService) { 
+     this.config = {
+       itemsPerPage: 5,
+       currentPage: 1,
+       totalItems: this.count
+   };
+    
+
+}
+pageChanged(event){
+  this.config.currentPage = event;
+}
   
   extraction(value){
     var assignees : string =" ";
     if (value != null){
-    for (var val of value){
-        
-        assignees = String( assignees + "  "  + val.login )
+      for (var val of value){
+          
+          assignees = String( assignees + "  "  + val.login )
 
+      }
+      return assignees
     }
-    return assignees
+    else{
+      return "No assigne"
+    }
   }
-  else{
-    return "No assigne"
-  }
-  }
-  Some() {
 
+
+  calculateSome() {
     for (var val of this.data)
     {
-      this.somme = val.value + this.somme
+      this.somme += parseInt(val.value);
     }
   }
-  Calucle_Percentage(value){
+
+  caluclePercentage(value){
     return Number((value*100)/this.somme)
   }
 

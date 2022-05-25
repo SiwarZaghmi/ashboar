@@ -1,5 +1,5 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
-import { ChartComponent } from "ng-apexcharts";
+import { ApexDataLabels, ApexLegend, ChartComponent } from "ng-apexcharts";
 import { GetDataService } from 'src/app/services/get-data.service';
 import {
   ApexNonAxisChartSeries,
@@ -12,6 +12,7 @@ export type ChartOptions = {
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
+  legend: ApexDataLabels;
 };
 @Component({
   selector: 'app-piechart',

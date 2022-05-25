@@ -1,0 +1,44 @@
+
+    <div class="card shadow">
+        <div class="card-header border-0">
+            <div class="row align-items-center">
+        <div class="col-md-4 text-right">
+            <b>Epic Informations</b>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control"  placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword">
+          </div>
+            </div>
+            <div class="table-responsive">
+          <table datatable class="table align-items-center table-flush hover">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="row">Epic Title</th>
+                    <th scope="row">Status</th>
+                    <th scope="row">Progress</th>
+                    <th scope="row">Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data| filter:searchedKeyword | paginate: config">
+                    <td>{{item._id}}</td>
+                    <td>{{status(item.labelss)}}</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                          <span class="mr-2"> {{progress(item.labelss)}}% </span>
+                          <div>
+                            <div class="progress">
+                              <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{progress(item.labelss)}}%"></div>
+                            </div>
+                          </div>
+                          <span class="mr-2">  {{issues(item.labelss)}} issues </span>
+                        </div>
+                      </td>
+                    <td>{{costs(item.labelss)}}$ TND</td>
+                </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+            </div>
+          </div>
+            

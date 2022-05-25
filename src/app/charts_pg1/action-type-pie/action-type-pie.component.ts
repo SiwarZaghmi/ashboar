@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartComponent } from "ng-apexcharts";
+import { ApexLegend, ChartComponent } from "ng-apexcharts";
 import {pieData} from "src/app/models/chart_models";
 import {
   ApexNonAxisChartSeries,
@@ -13,6 +13,7 @@ export type ChartOptions = {
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
+  legend : ApexLegend;
 };
 @Component({
   selector: 'app-action-type-pie',
@@ -31,13 +32,61 @@ export class ActionTypePieComponent implements OnInit {
         width: 380,
         type: "pie"
       },
+      legend: {
+        show: true,
+        showForSingleSeries: false,
+        showForNullSeries: true,
+        showForZeroSeries: true,
+        position: 'bottom',
+        horizontalAlign: 'center', 
+        floating: false,
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial',
+        fontWeight: 400,
+        formatter: undefined,
+        inverseOrder: false,
+        width: undefined,
+        height: undefined,
+        tooltipHoverFormatter: undefined,
+  
+        offsetX: 0,
+        offsetY: 0,
+        labels: {
+            colors: undefined,
+            useSeriesColors: false
+        },
+       markers: {
+            width: 12,
+            height: 12,
+            strokeWidth: 0,
+            strokeColor: '#fff',
+            fillColors: undefined,
+            radius: 12,
+            customHTML: undefined,
+            onClick: undefined,
+            offsetX: 0,
+            offsetY: 0
+        },
+        itemMargin: {
+            horizontal: 5,
+            vertical: 0
+        },
+        onItemClick: {
+            toggleDataSeries: true
+        },
+        onItemHover: {
+            highlightDataSeries: true
+        },
+      },
+    
+    
       labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 320,
           options: {
             chart: {
-              width: 200
+              width: 500
             },
             legend: {
               position: "bottom"

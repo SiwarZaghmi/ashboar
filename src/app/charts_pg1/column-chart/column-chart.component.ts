@@ -16,6 +16,7 @@ import {
   ApexFill,
   ApexTooltip
 } from "ng-apexcharts";
+import { table1 } from "src/app/models/model";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -61,7 +62,7 @@ export class ColumnChartComponent implements OnInit {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "55%",
+          columnWidth: "30%",
           endingShape: "rounded"
         }
       },
@@ -75,15 +76,7 @@ export class ColumnChartComponent implements OnInit {
       },
       xaxis: {
         categories: [
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct"
+          
         ]
       },
       yaxis: {
@@ -97,7 +90,7 @@ export class ColumnChartComponent implements OnInit {
       tooltip: {
         y: {
           formatter: function(val) {
-            return "$ " + val + " thousands";
+            return   val + " hours";
           }
         }
       }
@@ -106,10 +99,13 @@ export class ColumnChartComponent implements OnInit {
    
    }
   ngOnInit(): void {
-    this.getDataService.getData0().subscribe((res)=> {
-      this.data = res as columnData[]
-      let list:string[] = [];
-      this.data.map(res=> res.labels.filter(res =>res.name == 'size').map(res => list.push(res.value)))
+    this.getDataService.getData13().subscribe((res)=> {
+      this.data = res as table1[]
+      let list:number[] = [];
+      let list1:number[] = [];
+      this.data.map(res=> res.labelss.filter(res =>res.term == 'size').map(res => list.push(res.tot)))
+      this.data.map(res=> res.labelss.filter(res =>res.term == 'logged').map(res => list1.push(res.tot)))
+      console.log( this.data.map(res=> res._id))
       this.chartOptions.series = [
         {
           name: "size",
@@ -117,12 +113,12 @@ export class ColumnChartComponent implements OnInit {
         },
         {
           name: "logged",
-          data: this.data.map(res=> res.labels.filter(res =>res.name == 'logged').map(res => Number(res.value))),
+          data: list1,
         },
       
       ],
       this.chartOptions.xaxis = {
-        categories : this.data.map(res=> res._id.title),
+        categories : this.data.map(res=> res._id),
        }
        })
 

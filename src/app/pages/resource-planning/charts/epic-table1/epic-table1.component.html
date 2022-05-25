@@ -1,0 +1,57 @@
+<div class="row mt-3">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0">issues table</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Feature</th>
+                <th scope="col">Task</th>
+                <th scope="col">User_Stroy</th>
+                <th scope="col">Documentation</th>
+                <th scope="col">Bug</th>
+                <th scope="col">Test</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data">
+                <th scope="row">
+                  <a>{{item._id}}</a>
+                </th>
+                <td>
+                    {{task("Feature",item.labelss)}} 
+                </td>
+                <td>
+                    {{task("Task",item.labelss)}} 
+                  
+                </td>
+                <td>
+                    {{task("USER_STROY",item.labelss)}} 
+                </td>
+                <td>
+                    {{task("DOCUMENTATION",item.labelss)}} 
+                                    
+                </td>
+                <td>
+                    {{task("BUG",item.labelss)}} 
+                                      
+                  </td>
+                  <td>
+                    {{task("TEST",item.labelss)}} 
+                                      
+                  </td>
+            
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+

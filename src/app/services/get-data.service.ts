@@ -46,5 +46,11 @@ getData10() {
 getData11() {
   return this._http.get(environment.url+"/tablepg2");
 }
+getData12() {
+  return this._http.get(environment.url+"/epic");
+}
+getData13() {
+  return this._http.get(environment.url+"/epicc");
+}
 }
 

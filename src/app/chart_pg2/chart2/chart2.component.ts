@@ -16,7 +16,6 @@ export class Chart2Component implements OnInit {
   ngOnInit(): void {
     this.getDataService.getData2().subscribe((res)=> {
       this.data = res as data1[]})
-      console.log(this.data)
   }
   calculateStuff(somevalue1){
     return Number(somevalue1) * 4.5;
